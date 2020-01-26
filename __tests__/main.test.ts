@@ -1,7 +1,7 @@
-import {wait} from '../src/wait'
-import * as process from 'process'
-import * as cp from 'child_process'
-import * as path from 'path'
+import wait from '../src/wait'
+import process from 'process'
+import cp from 'child_process'
+import path from 'path'
 
 test('throws invalid number', async () => {
   const input = parseInt('foo', 10)
@@ -23,5 +23,7 @@ test('test runs', () => {
   const options: cp.ExecSyncOptions = {
     env: process.env
   }
-  console.log(cp.execSync(`node ${ip}`, options).toString())
+  console.log(cp.spawnSync(`node`, [
+    ip,
+  ], options).toString())
 })
